@@ -75,6 +75,6 @@ city = input('Укажите город или место: \n')
 
 url = f'https://wttr.in/{city}?1nTMqm&lang=ru'
 
-res = requests.get(url)
+res = requests.get(url, timeout=5)
 
 print(res.text)
