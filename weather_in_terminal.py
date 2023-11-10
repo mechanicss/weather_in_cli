@@ -17,12 +17,13 @@ params = {
 
 
 def get_status_response(res):
-
-    if res.ok:
+    try:
+        res.raise_for_status()
         status = 'ok'
-    else:
+
+    except Exception as e:
         status = 'err'
-        print('Страница не существует\n')
+        print(f'Ошибка: {e}\n')
 
     return status
 
