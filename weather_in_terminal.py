@@ -16,18 +16,6 @@ params = {
 }
 
 
-def get_status_response(res):
-    try:
-        res.raise_for_status()
-        status = 'ok'
-
-    except Exception as e:
-        status = 'err'
-        print(f'Ошибка: {e}\n')
-
-    return status
-
-
 def get_weather():
 
     for city in city_list:
@@ -36,10 +24,9 @@ def get_weather():
 
         res = requests.get(url, params=params, timeout=5)
 
-        status = get_status_response(res)
+        res.raise_for_status()
 
-        if status == 'ok':
-            print(res.text)
+        print(res.text)
 
 
 if __name__ == '__main__':
